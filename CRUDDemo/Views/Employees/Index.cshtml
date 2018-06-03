@@ -1,0 +1,32 @@
+﻿@model IEnumerable<CRUDDemo.Models.Employee>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+<p>@Html.ActionLink("Create Employee", "Create")</p>
+
+<table class="table table-condensed table-bordered table-striped">
+    <tr>
+        <th>@Html.DisplayNameFor(c => c.Name)</th>
+        <th>@Html.DisplayNameFor(c => c.Email)</th>
+        <th>@Html.DisplayNameFor(c => c.Phone)</th>
+        <th>@Html.DisplayNameFor(c => c.Address)</th>
+        <th></th>
+    </tr>
+    @foreach (var employee in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(c => employee.Name)</td>
+            <td>@Html.DisplayFor(c => employee.Email)</td>
+            <td>@Html.DisplayFor(c => employee.Phone)</td>
+            <td>@Html.DisplayFor(c => employee.Address)</td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = employee.EmployeeId}) |
+                @Html.ActionLink("Details", "Details", new { id = employee.EmployeeId}) |
+                @Html.ActionLink("Delete", "Delete", new { id = employee.EmployeeId})
+            </td>
+        </tr>
+    }
+</table>
